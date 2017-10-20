@@ -42,14 +42,24 @@ import { DelayLoadingModalComponent } from './delay-loading-modal.component';
         path: 'signin',
         component: LoginComponent,
         data: {
-          delay: 0
+          delay: 0,
+          successRate: 100
         }
       },
       {
         path: 'slow-signin',
         component: LoginComponent,
         data: {
-          delay: 5000
+          delay: 5000,
+          successRate: 100
+        }
+      },
+      {
+        path: 'unstable-signin',
+        component: LoginComponent,
+        data: {
+          delay: 1000,
+          successRate: 30
         }
       }
     ]),
