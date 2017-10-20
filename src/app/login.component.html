@@ -1,0 +1,29 @@
+<div class="container login_form">
+  <form class="form-signin" #signinForm="ngForm" id="signin-form" (ngSubmit)="signin(signinForm)">
+    <h2 class="form-signin-heading">ล็อกอิน</h2>
+    <label for="inputUser" class="sr-only">ชื่อผู้ใช้</label>
+    <input type="text" id="inputUser" name="login" class="form-control" placeholder="ชื่อผู้ใช้ (demouser)" required autofocus [(ngModel)]="login">
+    <label for="inputPassword" class="sr-only">รหัสผ่าน</label>
+    <input type="password" id="inputPassword" name="pass" class="form-control" placeholder="รหัสผ่าน (demopassword)" required [(ngModel)]="password">
+    <button class="btn btn-lg btn-primary btn-block" type="submit" id="buttonLogin">ล็อกอิน</button>
+  </form>
+
+  <!-- Modal -->
+  <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalTitle">ผิดพลาด</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="modalBody">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
