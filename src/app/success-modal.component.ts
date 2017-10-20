@@ -26,6 +26,9 @@ export class SuccessModalComponent {
     $('#modal').on('hidden.bs.modal', () => {
       this.defer.resolve()
     });
-    $('#modal').modal();
+    $('#modal').modal({
+      backdrop: 'static',
+      keyboard: false
+    });
   }
 }
