@@ -3,8 +3,6 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SuccessModalComponent } from './success-modal.component';
 
-declare var $: any;
-
 @Component({
   templateUrl: './create-customer.component.html'
 })

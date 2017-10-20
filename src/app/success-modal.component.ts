@@ -24,6 +24,7 @@ export class SuccessModalComponent {
   _show(msg: string): void {
     this.message = msg;
     $('#modal').on('hidden.bs.modal', () => {
+      $(this).off('hidden.bs.modal');
       this.defer.resolve()
     });
     $('#modal').modal({

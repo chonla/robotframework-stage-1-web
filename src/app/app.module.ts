@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { PlaygroundListComponent } from './playground-list.component';
@@ -11,6 +11,7 @@ import { DashboardComponent } from './dashboard.component';
 import { FrameComponent } from './frame.component'
 import { CreateCustomerComponent } from './create-customer.component'
 import { SuccessModalComponent } from './success-modal.component';
+import { DelayLoadingModalComponent } from './delay-loading-modal.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SuccessModalComponent } from './success-modal.component';
     DashboardComponent,
     FrameComponent,
     CreateCustomerComponent,
-    SuccessModalComponent
+    SuccessModalComponent,
+    DelayLoadingModalComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,17 @@ import { SuccessModalComponent } from './success-modal.component';
       },
       {
         path: 'signin',
-        component: LoginComponent
+        component: LoginComponent,
+        data: {
+          delay: 0
+        }
+      },
+      {
+        path: 'slow-signin',
+        component: LoginComponent,
+        data: {
+          delay: 5000
+        }
       }
     ]),
     RouterModule.forChild([
