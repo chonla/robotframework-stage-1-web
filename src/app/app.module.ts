@@ -11,6 +11,7 @@ import { DashboardComponent } from './dashboard.component';
 import { FrameComponent } from './frame.component'
 import { CreateCustomerComponent } from './create-customer.component'
 import { SuccessModalComponent } from './success-modal.component';
+import { ErrorModalComponent } from './error-modal.component';
 import { DelayLoadingModalComponent } from './delay-loading-modal.component';
 
 @NgModule({
@@ -23,6 +24,7 @@ import { DelayLoadingModalComponent } from './delay-loading-modal.component';
     FrameComponent,
     CreateCustomerComponent,
     SuccessModalComponent,
+    ErrorModalComponent,
     DelayLoadingModalComponent
   ],
   imports: [
