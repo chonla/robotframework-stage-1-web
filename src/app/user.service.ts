@@ -12,12 +12,12 @@ export class UserService {
 
   create(name: string, login: string, password: string): Promise<void> {
     this.createDefer = new Deferred<void>();
-    let ref = this.db.list("users");
-    let user = {
-      "login": login,
-      "name": name,
-      "password": password,
-      "locked": false
+    const ref = this.db.list('users');
+    const user = {
+      'login': login,
+      'name': name,
+      'password': password,
+      'locked': false
     };
     ref.push(user).then(() => {
       this.createDefer.resolve();
@@ -34,7 +34,7 @@ export class UserService {
 
   remove(key: string): Promise<void> {
     this.removeDefer = new Deferred<void>();
-    this.db.list("users").remove(key).then(() => {
+    this.db.list('users').remove(key).then(() => {
       this.removeDefer.resolve();
     });
     return this.removeDefer.promise;

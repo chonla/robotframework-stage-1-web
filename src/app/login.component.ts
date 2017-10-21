@@ -1,4 +1,4 @@
-import { Component, ViewChild, Input } from '@angular/core';
+import { Component, ViewChild, Input, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { DelayLoadingModalComponent } from './delay-loading-modal.component';
@@ -11,21 +11,21 @@ import { ErrorModalComponent } from './error-modal.component';
   styleUrls: ['./login.component.css']
 })
 
-export class LoginComponent {
+export class LoginComponent implements OnInit, OnDestroy {
   @ViewChild('delayLoadingModal') delayLoadingModal: DelayLoadingModalComponent;
   @ViewChild('errorModal') errorModal: ErrorModalComponent;
-  login: string = '';
-  pass: string = '';
-  successRate: number = 100;
+  login = '';
+  pass = '';
+  successRate = 100;
   sub: Subscription;
   private delay;
-  
+
   ngOnInit() {
     this.sub = this.route
       .data
-      .subscribe(v => { 
-        this.delay = v['delay']
-        this.successRate = v['successRate']
+      .subscribe(v => {
+        this.delay = v['delay'];
+        this.successRate = v['successRate'];
       });
   }
 
@@ -36,7 +36,7 @@ export class LoginComponent {
   constructor(private route: ActivatedRoute, private router: Router) { }
 
   signin(form: NgForm): void {
-    var credential = ['demouser', 'demopassword'];
+    const credential = ['demouser', 'demopassword'];
 
     if (this.route.data && this.route.data['delay']) {
       this.delay = this.route.data['delay'];
@@ -48,13 +48,13 @@ export class LoginComponent {
         return;
       }
 
-      var hit:number = Math.random() * 100;
+      const hit = Math.random() * 100;
       if (hit > this.successRate) {
         this.errorModal.show('ไม่สามารถติดต่อ API ได้');
         return false;
       }
 
-      this.router.navigate(["user/dashboard"]);
-    })
+      this.router.navigate(['user/dashboard']);
+    });
   }
 }

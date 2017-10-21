@@ -1,5 +1,5 @@
-import { Component } from '@angular/core'
-import { Deferred } from './defer.service'
+import { Component } from '@angular/core';
+import { Deferred } from './defer.service';
 
 declare var $: any;
 
@@ -9,11 +9,11 @@ declare var $: any;
 })
 
 export class ErrorModalComponent {
-  message: string = '';
+  message = '';
   defer: Deferred<void>;
 
   constructor() {
-    this.defer = new Deferred<void>()
+    this.defer = new Deferred<void>();
   }
 
   show(msg: string): Promise<void> {
@@ -25,7 +25,7 @@ export class ErrorModalComponent {
     this.message = msg;
     $('#errorModal').on('hidden.bs.modal', () => {
       $(this).off('hidden.bs.modal');
-      this.defer.resolve()
+      this.defer.resolve();
     });
     $('#errorModal').modal({
       backdrop: 'static',

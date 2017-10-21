@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PlaygroundService } from './playground.service';
 import { Playground } from './playground';
 
@@ -8,7 +8,7 @@ import { Playground } from './playground';
   styleUrls: ['./app.component.css'],
   providers: [PlaygroundService]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app';
   playgrounds: Playground[];
 

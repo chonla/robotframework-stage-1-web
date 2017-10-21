@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PlaygroundService } from './playground.service';
 import { Playground } from './playground';
 
@@ -9,7 +9,7 @@ import { Playground } from './playground';
   providers: [PlaygroundService]
 })
 
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   playgrounds: Playground[];
 
   constructor(private playgroundService: PlaygroundService) {}

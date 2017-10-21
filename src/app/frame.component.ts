@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { DashboardComponent } from './dashboard.component'
+import { DashboardComponent } from './dashboard.component';
 
 @Component({
   templateUrl: './frame.component.html',
@@ -8,5 +8,4 @@ import { DashboardComponent } from './dashboard.component'
 })
 
 export class FrameComponent {
-
 }

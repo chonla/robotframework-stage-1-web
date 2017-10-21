@@ -14,8 +14,8 @@ import { PlaygroundListComponent } from './playground-list.component';
 import { LoginComponent } from './login.component';
 import { HomeComponent } from './home.component';
 import { DashboardComponent } from './dashboard.component';
-import { FrameComponent } from './frame.component'
-import { CreateCustomerComponent } from './create-customer.component'
+import { FrameComponent } from './frame.component';
+import { CreateCustomerComponent } from './create-customer.component';
 import { SuccessModalComponent } from './success-modal.component';
 import { ErrorModalComponent } from './error-modal.component';
 import { DelayLoadingModalComponent } from './delay-loading-modal.component';

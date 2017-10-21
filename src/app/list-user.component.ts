@@ -12,7 +12,7 @@ export class ListUserComponent {
   @ViewChild('loadingModal') loadingModal: LoadingModalComponent;
   users: Observable<any[]>;
 
-  constructor(private user:UserService) {
+  constructor(private user: UserService) {
     this.users = user.list();
   }
 
@@ -21,8 +21,8 @@ export class ListUserComponent {
       .then(() => {
         this.user.remove(key)
           .then(() => {
-            this.loadingModal.hide()
-          })
-      })
+            this.loadingModal.hide();
+          });
+      });
   }
 }
