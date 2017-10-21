@@ -3,6 +3,11 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
+import { environment } from '../environments/environment';
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+
 import { AppComponent } from './app.component';
 import { PlaygroundListComponent } from './playground-list.component';
 import { LoginComponent } from './login.component';
@@ -13,6 +18,10 @@ import { CreateCustomerComponent } from './create-customer.component'
 import { SuccessModalComponent } from './success-modal.component';
 import { ErrorModalComponent } from './error-modal.component';
 import { DelayLoadingModalComponent } from './delay-loading-modal.component';
+import { CreateUserComponent } from './create-user.component';
+import { LoadingModalComponent } from './loading-modal.component';
+import { ListUserComponent } from './list-user.component';
+import { UserService } from './user.service';
 
 @NgModule({
   declarations: [
@@ -25,11 +34,16 @@ import { DelayLoadingModalComponent } from './delay-loading-modal.component';
     CreateCustomerComponent,
     SuccessModalComponent,
     ErrorModalComponent,
-    DelayLoadingModalComponent
+    DelayLoadingModalComponent,
+    CreateUserComponent,
+    LoadingModalComponent,
+    ListUserComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
     RouterModule.forRoot([
       {
         path: '',
@@ -92,12 +106,20 @@ import { DelayLoadingModalComponent } from './delay-loading-modal.component';
             data: {
               delays: [100, 8000]
             }
+          },
+          {
+            path: 'create-user',
+            component: CreateUserComponent
+          },
+          {
+            path: 'list-user',
+            component: ListUserComponent
           }
         ]
       }
     ])
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

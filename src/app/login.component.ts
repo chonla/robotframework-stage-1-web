@@ -15,11 +15,11 @@ export class LoginComponent {
   @ViewChild('delayLoadingModal') delayLoadingModal: DelayLoadingModalComponent;
   @ViewChild('errorModal') errorModal: ErrorModalComponent;
   login: string = '';
-  password: string = '';
-  delay: number = 0;
+  pass: string = '';
   successRate: number = 100;
   sub: Subscription;
-
+  private delay;
+  
   ngOnInit() {
     this.sub = this.route
       .data

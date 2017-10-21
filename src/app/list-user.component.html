@@ -1,0 +1,24 @@
+<div>
+  <h1>รายชื่อผู้ใช้</h1>
+
+  <div class="table-responsive" id="user-table">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ชื่อ-นามสกุล</th>
+          <th>ล็อกอิน</th>
+          <th>ลบ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let u of users | async">
+          <td>{{u.name}}</td>
+          <td>{{u.login}}</td>
+          <td><button [hidden]="u.locked" class="btn btn-danger btn-block" id="button-remove-{{u.login}}" (click)="remove(u.key)">ลบ</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <loading-modal #loadingModal></loading-modal>
+</div>

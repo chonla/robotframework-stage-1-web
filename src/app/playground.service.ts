@@ -11,6 +11,7 @@ export class PlaygroundService {
       { key: "create-customer", route: "/user/create-customer", title: "สร้างข้อมูลลูกค้าใหม่", description: "หน้าฟอร์มสำหรับสร้างข้อมูลลูกค้าใหม่" },
       { key: "slow-form", route: "/user/intermittently-slow-create-customer", title: "สร้างข้อมูลลูกค้าใหม่ (โหลดช้า)", description: "หน้าฟอร์มสำหรับสร้างข้อมูลลูกค้าใหม่ รอสักพัก กว่าจะโหลดขึ้น" },
       { key: "create-user", route: "/user/create-user", title: "สร้างข้อมูลผู้ใช้ใหม่", description: "ใช้ Firebase เป็นฐานข้อมูล" },
+      { key: "list-user", route: "/user/list-user", title: "รายชื่อผู้ใช้", description: "ใช้ Firebase เป็นฐานข้อมูล" },
     ];
     return Promise.resolve(playgrounds);
   }
