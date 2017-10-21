@@ -81,7 +81,17 @@ import { DelayLoadingModalComponent } from './delay-loading-modal.component';
           },
           {
             path: 'create-customer',
-            component: CreateCustomerComponent
+            component: CreateCustomerComponent,
+            data: {
+              delays: [100, 300]
+            }
+          },
+          {
+            path: 'intermittently-slow-create-customer',
+            component: CreateCustomerComponent,
+            data: {
+              delays: [100, 8000]
+            }
           }
         ]
       }

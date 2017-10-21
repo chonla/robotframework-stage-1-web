@@ -5,8 +5,6 @@ import { DelayLoadingModalComponent } from './delay-loading-modal.component';
 import { Subscription } from 'rxjs/Subscription';
 import { ErrorModalComponent } from './error-modal.component';
 
-declare var $: any;
-
 @Component({
   selector: 'app-root',
   templateUrl: './login.component.html',

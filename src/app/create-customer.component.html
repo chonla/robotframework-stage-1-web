@@ -1,7 +1,12 @@
 <div>
   <h1>สร้างข้อมูลลูกค้าใหม่</h1>
+  <section class="row placeholders" [hidden]="loadingHidden">
+    <div class="col-sm-10 placeholder">
+      กำลังโหลด...
+    </div>
+  </section>
 
-  <section class="row placeholders">
+  <section class="row placeholders" [hidden]="formHidden">
     <div class="col-sm-10 placeholder">
       <form method="post" id="create-form" #createForm="ngForm" (ngSubmit)="createCustomer(createForm)">
         <div class="form-group">
