@@ -20,7 +20,7 @@ export class DelayLoadingModalComponent {
     this._clearTimer();
   }
 
-  _clearTimer() {
+  private _clearTimer() {
     if (this.timer) {
       clearTimeout(this.timer)
     }
@@ -36,9 +36,6 @@ export class DelayLoadingModalComponent {
       $(this).off('shown.bs.modal');
       this.timer = setTimeout(() => {
         $('#modalLoading').modal('hide')
-        this._clearTimer();
-        console.log("timer")
-
       }, timeout);  
     });
     $('#modalLoading').modal({
