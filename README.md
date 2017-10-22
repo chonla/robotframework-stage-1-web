@@ -4,4 +4,4 @@
 
 -----
 
-เขียนด้วย Angular, Bootstrap 4 Beta และ Firebase
+เขียนด้วย Angular, Bootstrap 4 Beta และ Firebase ทำ CI/CD ด้วย GitHub และ TravisCI
