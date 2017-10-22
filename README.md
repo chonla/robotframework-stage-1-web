@@ -1,6 +1,6 @@
 # Robot Framework - Stage 1 : Playground
 
-เว็บไซต์นี้เอาไว้ใช้สำหรับทดสอบ Robot Framework - Stage 1 class.
+เว็บไซต์นี้เอาไว้ใช้สำหรับทดสอบบทเรียน Robot Framework - Stage 1
 
 -----
 
