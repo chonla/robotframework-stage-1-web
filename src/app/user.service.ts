@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Deferred } from './defer.service';
 import { Observable } from 'rxjs/Observable';
+import { first } from 'rxjs/operators/first';
 
 @Injectable()
 export class UserService {
   createDefer: Deferred<void>;
   removeDefer: Deferred<void>;
+  authDefer: Deferred<boolean>;
 
   constructor(private db: AngularFireDatabase) { }
 
@@ -38,5 +40,22 @@ export class UserService {
       this.removeDefer.resolve();
     });
     return this.removeDefer.promise;
+  }
+
+  auth(login: string, pass: string): Promise<boolean> {
+    this.authDefer = new Deferred<boolean>();
+    this.db.list('users', ref => ref.orderByChild('login').equalTo(login).limitToFirst(1)).snapshotChanges()
+      .forEach(changes => {
+        const r = changes.filter(c => {
+          const u = c.payload.val();
+          return u.password === pass;
+        });
+        if (r.length > 0) {
+          this.authDefer.resolve(r[0].payload.val().password === pass);
+        } else {
+          this.authDefer.resolve(false);
+        }
+      });
+    return this.authDefer.promise;
   }
 }
