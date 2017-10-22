@@ -29,7 +29,8 @@ export class SuccessModalComponent {
     });
     $('#modal').modal({
       backdrop: 'static',
-      keyboard: false
+      keyboard: false,
+      focus: true
     });
   }
 }
