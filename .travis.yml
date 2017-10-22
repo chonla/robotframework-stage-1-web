@@ -3,7 +3,7 @@ node_js:
   - "8.7"
 branches:
   only:
-    -master
+    - master
 
 before_script:
   - npm install -g firebase-tools
