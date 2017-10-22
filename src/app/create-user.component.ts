@@ -36,7 +36,7 @@ export class CreateUserComponent {
           this.loadingModal.hide()
             .then(() => {
               this.successModal.show('บันทึกสำเร็จ').then(() => {
-                this.router.navigate(['user/dashboard']);
+                this.router.navigate(['user/list-user']);
               });
             });
         });
