@@ -23,11 +23,11 @@ export class SuccessModalComponent {
 
   _show(msg: string): void {
     this.message = msg;
-    $('#modal').on('hidden.bs.modal', () => {
+    $('#success-modal').on('hidden.bs.modal', () => {
       $(this).off('hidden.bs.modal');
       this.defer.resolve();
     });
-    $('#modal').modal({
+    $('#success-modal').modal({
       backdrop: 'static',
       keyboard: false,
       focus: true
