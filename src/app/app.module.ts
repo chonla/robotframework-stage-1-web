@@ -23,6 +23,8 @@ import { CreateUserComponent } from './create-user.component';
 import { LoadingModalComponent } from './loading-modal.component';
 import { ListUserComponent } from './list-user.component';
 import { UserService } from './user.service';
+import { ReportService } from './report.service';
+import { MoneyPipe } from './money.pipe';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { UserService } from './user.service';
     DelayLoadingModalComponent,
     CreateUserComponent,
     LoadingModalComponent,
-    ListUserComponent
+    ListUserComponent,
+    MoneyPipe
   ],
   imports: [
     BrowserModule,
@@ -120,7 +123,7 @@ import { UserService } from './user.service';
       }
     ])
   ],
-  providers: [UserService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [UserService, ReportService ,{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
