@@ -3,7 +3,7 @@
 
   <h2>ตารางรายงานอะไรสักอย่าง</h2>
   <div class="table-responsive">
-    <table class="table table-striped">
+    <table class="table table-striped" id="report-table">
       <thead>
         <tr>
           <th>วันที่</th>
@@ -23,7 +23,7 @@
     </table>
 
     <!-- pager -->
-    <nav aria-label="Page navigation">
+    <nav aria-label="Page navigation" id="report-pager">
       <ul class="pagination justify-content-center">
         <li class="page-item" [ngClass]="{disabled:report.page === 1}">
           <a class="page-link" href="#" (click)="setPage(1)" id="first-page">First</a>
