@@ -1,34 +1,7 @@
 <div>
-  <h1>Dashboard</h1>
+  <h1>ภาพรวม</h1>
 
-  <section class="row text-center placeholders">
-    <div class="col-6 col-sm-3 placeholder">
-      <img src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle"
-        alt="Generic placeholder thumbnail">
-      <h4>Label</h4>
-      <div class="text-muted">Something else</div>
-    </div>
-    <div class="col-6 col-sm-3 placeholder">
-      <img src="data:image/gif;base64,R0lGODlhAQABAIABAADcgwAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle"
-        alt="Generic placeholder thumbnail">
-      <h4>Label</h4>
-      <span class="text-muted">Something else</span>
-    </div>
-    <div class="col-6 col-sm-3 placeholder">
-      <img src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle"
-        alt="Generic placeholder thumbnail">
-      <h4>Label</h4>
-      <span class="text-muted">Something else</span>
-    </div>
-    <div class="col-6 col-sm-3 placeholder">
-      <img src="data:image/gif;base64,R0lGODlhAQABAIABAADcgwAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle"
-        alt="Generic placeholder thumbnail">
-      <h4>Label</h4>
-      <span class="text-muted">Something else</span>
-    </div>
-  </section>
-
-  <h2>A long table</h2>
+  <h2>A long report table</h2>
   <div class="table-responsive">
     <table class="table table-striped">
       <thead>
@@ -40,7 +13,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let rep of reports">
+        <tr *ngFor="let rep of report.getPagedData()">
           <td>{{rep.datestamp | date}}</td>
           <td>{{rep.income | money}}</td>
           <td>{{rep.cost | money}}</td>
@@ -49,5 +22,25 @@
       </tbody>
     </table>
 
+    <!-- pager -->
+    <nav aria-label="Page navigation">
+      <ul class="pagination justify-content-center">
+        <li class="page-item" [ngClass]="{disabled:report.page === 1}">
+          <a class="page-link" href="#" (click)="setPage(1)" id="first-page">First</a>
+        </li>
+        <li class="page-item" [ngClass]="{disabled:report.page === 1}">
+          <a class="page-link" href="#" (click)="setPage(report.page - 1)" id="previous-page">Previous</a>
+        </li>
+        <li class="page-item" *ngFor="let page of report.pageRange" [ngClass]="{active:report.page === page}">
+          <a class="page-link" href="#" (click)="setPage(page)" id="goto-page-{{page}}">{{page}}</a>
+        </li>
+        <li class="page-item" [ngClass]="{disabled:report.page === report.pageCount}">
+          <a class="page-link" href="#" (click)="setPage(report.page + 1)" id="next-page">Next</a>
+        </li>
+        <li class="page-item" [ngClass]="{disabled:report.page === report.pageCount}">
+          <a class="page-link" href="#" (click)="setPage(report.pageCount)" id="last-page">Last</a>
+        </li>
+      </ul>
+    </nav>
   </div>
 </div>

@@ -8,9 +8,16 @@ import { Report } from './report';
 })
 
 export class DashboardComponent {
-  @Input() reports: Report[];
+  @Input() report: Report;
 
   constructor(reportService: ReportService) {
-    reportService.get().then(reports => this.reports = reports);
+    reportService.get().then(report => {
+      this.report = report;
+    });
+  }
+
+  setPage(page: number): boolean {
+    this.report.setPage(page);
+    return false;
   }
 }

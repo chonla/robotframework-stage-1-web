@@ -7,7 +7,7 @@ export class MoneyPipe implements PipeTransform {
     const token = tmp.split('.');
     const dec = token[1];
     let ful = token[0];
-    if (ful.length >= 5) {
+    if (ful.length >= 4) {
       ful = ful.replace(/(\d)(?=(\d{3})+$)/g, '$1,');
     }
     return ful + '.' + dec;
