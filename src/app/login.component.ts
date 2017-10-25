@@ -1,11 +1,12 @@
 import { logWarnings } from 'protractor/built/driverProviders';
 import { Component, ViewChild, Input, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { DelayLoadingModalComponent } from './delay-loading-modal.component';
 import { Subscription } from 'rxjs/Subscription';
 import { ErrorModalComponent } from './error-modal.component';
 import { UserService } from './user.service';
+import { Credential } from './credential.interface';
 
 @Component({
   selector: 'app-root',
@@ -29,26 +30,26 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.delay = v['delay'];
         this.successRate = v['successRate'];
       });
-
-    this.loginForm = new FormGroup({
-      login: new FormControl(),
-      pass: new FormControl()
-    });
   }
 
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
 
-  constructor(private route: ActivatedRoute, private router: Router, private user: UserService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private user: UserService, private fb: FormBuilder) {
+    this.loginForm = fb.group({
+      login: '',
+      pass: ''
+    });
+  }
 
-  signin(): void {
+  signin({ value, valid }: { value: Credential, valid: boolean }): void {
     if (this.route.data && this.route.data['delay']) {
       this.delay = this.route.data['delay'];
     }
 
     this.delayLoadingModal.show(this.delay).then(() => {
-      this.user.auth(this.loginForm.get('login').value, this.loginForm.get('pass').value).then(s => {
+      this.user.auth(value.login, value.pass).then(s => {
         if (s) {
           const hit = Math.random() * 100;
           if (hit > this.successRate) {
