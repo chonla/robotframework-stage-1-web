@@ -4,25 +4,29 @@
       "login": "demouser",
       "name": "Demo User",
       "password": "demopassword",
-      "locked": true
+      "locked": true,
+      "credential": "d9d4ec9e2796ed9ad517eea231860c948c3be0203c002015e8f0a0319f4b1bbd"
     },
     "b": {
       "login": "mario",
       "name": "มาริโอ้",
       "password": "dasdFAUDSF",
-      "locked": false
+      "locked": false,
+      "credential": "62cebe42f5ef55c43c1552ef7867998cd370298a2738df8d5367543985dda59c"
     },
     "c": {
       "login": "pracha",
       "name": "ประชา",
       "password": "aUAmviOW114",
-      "locked": false
+      "locked": false,
+      "credential": "876a45850102904e3277bd33dd2f05329a4e091ea43ba89abced05fb41a26796"
     },
     "d": {
       "login": "somdee",
       "name": "สมดี",
       "password": "cjj9w22mAUl",
-      "locked": false
+      "locked": false,
+      "credential": "16e1f627b08c4a907f126906d443c30c8bea298e06f31a9c46e8ad5689802365"
     }
   }
 }
