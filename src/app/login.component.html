@@ -1,10 +1,11 @@
 <div class="container login_form">
-  <form class="form-signin" #signinForm="ngForm" id="signin-form" (ngSubmit)="signin(signinForm)">
+  <!-- <form class="form-signin" #signinForm="ngForm" id="signin-form" (ngSubmit)="signin(signinForm)"> -->
+  <form class="form-signin" [formGroup]="loginForm" (ngSubmit)="signin()">
     <h2 class="form-signin-heading">ล็อกอิน</h2>
     <label for="inputUser" class="sr-only">ชื่อผู้ใช้</label>
-    <input type="text" id="inputUser" name="login" class="form-control" placeholder="ชื่อผู้ใช้ (demouser)" required autofocus [(ngModel)]="login">
+    <input type="text" id="inputUser" formControlName="login" class="form-control" placeholder="ชื่อผู้ใช้ (demouser)" required autofocus>
     <label for="inputPassword" class="sr-only">รหัสผ่าน</label>
-    <input type="password" id="inputPassword" name="pass" class="form-control" placeholder="รหัสผ่าน (demopassword)" required [(ngModel)]="pass">
+    <input type="password" id="inputPassword" formControlName="pass" class="form-control" placeholder="รหัสผ่าน (demopassword)" required>
     <button class="btn btn-lg btn-primary btn-block" type="submit" id="buttonLogin">ล็อกอิน</button>
   </form>
 

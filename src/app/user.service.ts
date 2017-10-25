@@ -3,6 +3,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Deferred } from './defer.service';
 import { Observable } from 'rxjs/Observable';
 import { first } from 'rxjs/operators/first';
+import { sha256 } from 'js-sha256';
 
 @Injectable()
 export class UserService {
@@ -15,11 +16,13 @@ export class UserService {
   create(name: string, login: string, password: string): Promise<void> {
     this.createDefer = new Deferred<void>();
     const ref = this.db.list('users');
+    const credential = sha256(login + ':' + password);
     const user = {
       'login': login,
       'name': name,
       'password': password,
-      'locked': false
+      'locked': false,
+      'credential': credential
     };
     ref.push(user).then(() => {
       this.createDefer.resolve();
@@ -44,7 +47,8 @@ export class UserService {
 
   auth(login: string, pass: string): Promise<boolean> {
     this.authDefer = new Deferred<boolean>();
-    this.db.list('users', ref => ref.orderByChild('login').equalTo(login).limitToFirst(1)).snapshotChanges()
+    const credential = sha256(login + ':' + pass);
+    this.db.list('users', ref => ref.orderByChild('credential').equalTo(credential).limitToFirst(1)).snapshotChanges()
       .forEach(changes => {
         const r = changes.filter(c => {
           const u = c.payload.val();
