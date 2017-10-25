@@ -1,7 +1,6 @@
 import { logWarnings } from 'protractor/built/driverProviders';
 import { Component, ViewChild, Input, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-// import { NgForm } from '@angular/forms';
 import { FormGroup, FormControl } from '@angular/forms';
 import { DelayLoadingModalComponent } from './delay-loading-modal.component';
 import { Subscription } from 'rxjs/Subscription';
@@ -18,8 +17,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   @ViewChild('delayLoadingModal') delayLoadingModal: DelayLoadingModalComponent;
   @ViewChild('errorModal') errorModal: ErrorModalComponent;
 
-  // login = '';
-  // pass = '';
   successRate = 100;
   sub: Subscription;
   private delay;
