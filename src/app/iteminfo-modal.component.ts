@@ -10,7 +10,7 @@ declare var $: any;
 })
 
 export class ItemInfoModalComponent {
-  protected rg: ReportGroup;
+  public rg: ReportGroup;
   defer: Deferred<void>;
 
   constructor() {
