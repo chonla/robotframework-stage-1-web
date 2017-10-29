@@ -1,11 +1,12 @@
+import { ReportGroup } from './report-group';
 import { ReportItem } from './report-item';
 
 export class Report {
   page: number;
   pageCount: number;
-  data: ReportItem[];
+  data: ReportGroup[];
   pageSize: number;
-  pagedData: ReportItem[];
+  pagedData: ReportGroup[];
   pageRange: number[];
 
   setPageSize(s: number) {
@@ -35,8 +36,36 @@ export class Report {
     }
   }
 
+  groupData(d: ReportItem[]): ReportGroup[] {
+    const g: { [index: string]: any; } = {};
+    for (let i = 0; i < d.length; i++) {
+      const v = d[i].datestamp.split('T');
+
+      if (!g.hasOwnProperty(v[0])) {
+        const rg = new ReportGroup();
+        rg.date = v[0];
+        rg.total_cost = 0;
+        rg.total_income = 0;
+        rg.items = new Array<ReportItem>();
+        g[rg.date] = rg;
+      }
+
+      g[v[0]].total_cost += d[i].cost;
+      g[v[0]].total_income += d[i].income;
+      g[v[0]].items.push(d[i]);
+    }
+
+    const o: ReportGroup[] = [];
+    for (const k in g) {
+      if (g.hasOwnProperty(k)) {
+        o.push(g[k]);
+      }
+    }
+    return o;
+  }
+
   setData(d: ReportItem[]) {
-    this.data = d;
+    this.data = this.groupData(d);
 
     this.setPage(1);
     this.refresh();

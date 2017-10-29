@@ -25,6 +25,7 @@ import { ListUserComponent } from './list-user.component';
 import { UserService } from './user.service';
 import { ReportService } from './report.service';
 import { MoneyPipe } from './money.pipe';
+import { ItemInfoModalComponent } from './iteminfo-modal.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { MoneyPipe } from './money.pipe';
     CreateUserComponent,
     LoadingModalComponent,
     ListUserComponent,
-    MoneyPipe
+    MoneyPipe,
+    ItemInfoModalComponent
   ],
   imports: [
     BrowserModule,
@@ -124,7 +126,7 @@ import { MoneyPipe } from './money.pipe';
       }
     ])
   ],
-  providers: [UserService, ReportService ,{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [UserService, ReportService, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

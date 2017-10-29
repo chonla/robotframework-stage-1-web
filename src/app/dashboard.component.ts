@@ -1,6 +1,8 @@
 import { ReportService } from './report.service';
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { Report } from './report';
+import { ReportGroup } from './report-group';
+import { ItemInfoModalComponent } from './iteminfo-modal.component';
 
 @Component({
   selector: 'app-content',
@@ -9,6 +11,7 @@ import { Report } from './report';
 
 export class DashboardComponent {
   @Input() report: Report;
+  @ViewChild('itemInfoModal') itemInfoModal: ItemInfoModalComponent;
 
   constructor(reportService: ReportService) {
     reportService.get().then(report => {
@@ -19,5 +22,9 @@ export class DashboardComponent {
   setPage(page: number): boolean {
     this.report.setPage(page);
     return false;
+  }
+
+  showReport(rg: ReportGroup) {
+    this.itemInfoModal.show(rg);
   }
 }

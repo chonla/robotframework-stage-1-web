@@ -1,6 +1,6 @@
 <div class="container login_form">
   <!-- <form class="form-signin" #signinForm="ngForm" id="signin-form" (ngSubmit)="signin(signinForm)"> -->
-  <form class="form-signin" [formGroup]="loginForm" id="signin-form" (ngSubmit)="signin(loginForm)">
+  <form novalidate class="form-signin" [formGroup]="loginForm" id="signin-form" (ngSubmit)="signin(loginForm)">
     <h2 class="form-signin-heading">ล็อกอิน</h2>
     <label for="inputUser" class="sr-only">ชื่อผู้ใช้</label>
     <input type="text" id="inputUser" formControlName="login" class="form-control" placeholder="ชื่อผู้ใช้ (demouser)" required autofocus>

@@ -1,7 +1,7 @@
 import { logWarnings } from 'protractor/built/driverProviders';
 import { Component, ViewChild, Input, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { DelayLoadingModalComponent } from './delay-loading-modal.component';
 import { Subscription } from 'rxjs/Subscription';
 import { ErrorModalComponent } from './error-modal.component';
@@ -38,8 +38,8 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute, private router: Router, private user: UserService, private fb: FormBuilder) {
     this.loginForm = fb.group({
-      login: '',
-      pass: ''
+      login: ['', Validators.required],
+      pass: ['', Validators.required]
     });
   }
 

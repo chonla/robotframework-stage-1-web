@@ -13,7 +13,7 @@ export class SuccessModalComponent {
   defer: Deferred<void>;
 
   constructor() {
-    this.defer = new Deferred<void>()
+    this.defer = new Deferred<void>();
   }
 
   show(msg: string): Promise<void> {

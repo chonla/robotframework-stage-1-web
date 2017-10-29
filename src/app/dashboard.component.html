@@ -10,14 +10,16 @@
           <th>รายได้</th>
           <th>รายจ่าย</th>
           <th>กำไร</th>
+          <th>รายละเอียด</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let rep of report.getPagedData()">
-          <td>{{rep.datestamp | date}}</td>
-          <td>{{rep.income | money}}</td>
-          <td>{{rep.cost | money}}</td>
-          <td>{{(rep.income - rep.cost) | money}}</td>
+          <td>{{rep.date | date}}</td>
+          <td>{{rep.total_income | money}}</td>
+          <td>{{rep.total_cost | money}}</td>
+          <td>{{(rep.total_income - rep.total_cost) | money}}</td>
+          <td><button class="btn btn-primary" (click)="showReport(rep)">ดูรายละเอียด</button></td>
         </tr>
       </tbody>
     </table>
@@ -42,5 +44,7 @@
         </li>
       </ul>
     </nav>
+
+    <iteminfo-modal #itemInfoModal></iteminfo-modal>
   </div>
 </div>
