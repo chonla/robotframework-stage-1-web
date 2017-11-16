@@ -1,24 +1,17 @@
-import { TestBed, async } from '@angular/core/testing';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { async } from '@angular/core/testing';
 import { HomeComponent } from './home.component';
+import { PlaygroundService } from './playground.service';
+import { Playground } from './playground';
 
 describe('HomeComponent', () => {
-  const fixture: any = null;
-  const cmp: any = null;
+  const cmp: HomeComponent = null;
+  const mockPlaygroundService: PlaygroundService = null;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [
-        HomeComponent
-      ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
-    }).compileComponents();
-    this.fixture = TestBed.createComponent(HomeComponent);
-    this.cmp = this.fixture.debugElement.componentInstance;
-  }));
-
-  it('should create the component', async(() => {
-    expect(this.cmp).toBeTruthy();
+    this.mockPlaygroundService = jasmine.createSpyObj('playgroundService', {
+      'get': Promise.resolve([{ key: 'aa', route: '/bb', title: 'cc', description: 'dd' }])
+    });
+    this.cmp = new HomeComponent(this.mockPlaygroundService);
   }));
 
   it('should load playground when init', async(() => {
@@ -27,5 +20,17 @@ describe('HomeComponent', () => {
     this.cmp.ngOnInit();
 
     expect(this.cmp.getPlaygrounds).toHaveBeenCalled();
+  }));
+
+  it('should call playgroundService.get when getting playgrounds', async(() => {
+    this.cmp.getPlaygrounds().then(() => {
+      expect(this.mockPlaygroundService.get).toHaveBeenCalled();
+    });
+  }));
+
+  it('should call set local playground to returned value from playgroundService.get', async(() => {
+    this.cmp.getPlaygrounds().then(() => {
+      expect(this.cmp.playgrounds).toEqual([{ key: 'aa', route: '/bb', title: 'cc', description: 'dd' }]);
+    });
   }));
 });

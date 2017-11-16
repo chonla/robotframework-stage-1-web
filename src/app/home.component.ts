@@ -14,8 +14,8 @@ export class HomeComponent implements OnInit {
 
   constructor(private playgroundService: PlaygroundService) {}
 
-  getPlaygrounds(): void {
-    this.playgroundService.get().then(playgrounds => this.playgrounds = playgrounds);
+  getPlaygrounds(): Promise<Playground[]> {
+    return this.playgroundService.get().then(playgrounds => this.playgrounds = playgrounds);
   }
 
   ngOnInit(): void {
